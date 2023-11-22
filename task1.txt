@@ -2,9 +2,39 @@ example0.py
 Explain what it does. What do the different lines do?
 
 
+import time #Imports the time module which measures current time in seconds from Jan 1, 1970.
 
 
+x = time.time() # x equals the current time 
+
+print(x) # print the current time when line 8 was run
+
+time.sleep(3.5) # pauses the program for 3.5 seconds
+
+print("I went to sleep for 3.5 seconds") # prints that 3.5 seconds has elapsed
+now = time.time() # a new variable "now" is set to the value of the current time
+
+print(f"elapsed time: {now - x} seconds") # prints the time elapsed between time when line 8 was ran, 
+                                            and time when line 15 was ran. That time is around the
+                                            time that the program wen to sleep.
 
 example1.py
 Explain what it does. Give a brief summary of the program
 and explain the importance of each line.
+
+alarms = [0,0,0] # "alarms" is set to a list of integers all equalling 0.
+delays = [10,20,60] #"delays" is set to a list of integers, 10, 20, and 60. These will be the delays in seconds.
+start = time.time() # variable "start" is set to the current time. Uses the time module to evaluate the answer.
+alarms[0] = start + delays[0] #Object 0 of "alarms" is changed to the value of "start" plus the 0th value of delays. Shows a delay of 10 seconds.
+alarms[1] = start + delays[1] #Object 1 of "alarms" is changed to the value of "start" plus the 1st value of delays. Shows a delay of 20 seconds.
+alarms[2] = start + delays[2] #Object 2 of "alarms" is changed to the value of "start" plus the 2nd value of delays. Shows a delay of 60 seconds.
+
+while True:
+    for i in range(0,3):
+        now = time.time() #"now" is equal to the current time.
+        if now > alarms[i]: #tests to see if the current time is greater than the time where the alarm should go off.
+            print(f"alarm {i} {delays[i]} second alarm has been triggered because now ({round(now,3)}) > alarm {i} {round(alarms[i],3)}") 
+            #shows which alarm that has been triggered because the current time is greater than the time where that alarm goes off.
+            alarms[i] = now + delays[i] #changes the values in "alarms" to go off later with the same intervals listed in "delays".
+    time.sleep(1) #the program is paused for 1 second, leading "now" to be one higher than before.
+    print(f"time elapsed is {round(time.time() - start,3)}") #prints the amount of time that has passed since the start of the program to now.

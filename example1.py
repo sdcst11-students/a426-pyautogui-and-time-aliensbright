@@ -17,3 +17,6 @@ while True:
             alarms[i] = now + delays[i]
     time.sleep(1)
     print(f"time elapsed is {round(time.time() - start,3)}")
+    if now-start>100:
+        break
+    
