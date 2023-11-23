@@ -1,6 +1,6 @@
 #!working with time
 
-import random
+#import random
 import keyboard
 import time
 
@@ -25,18 +25,36 @@ functionality (does it work the way it is intended)
 modularity (is it broken up into functions to make your main block momre readable)
 appropriate use of return values and input parameters
 
+
+
 """
 
 # The code shown below is one way to read a single 
 # keystroke from the keyboard and store it into 
 # a variable. We will use it as the basis for this 
 # assignment.
+def readkey(n):
+    y=''
+    while y!=n:
+        print(f'Enter the letter shown: {n}\n ')
+        y = keyboard.read_key()
+        time.sleep(0.15)
 
-while True:
-    y = keyboard.read_key()
-    print(y)
-    print(time.time())
-    t = time.localtime()
-    print(t)
-    print(time.strftime("%H",t))
-    break
+
+start=time.time()
+
+LetList= ['r','j','k','l','g','m','b','a','s','p']
+for i in LetList:
+    readkey(i)
+
+end=time.time()
+print(f'You took {round(end-start,3)} seconds')
+
+#while True:
+#    y = keyboard.read_key()
+#    print(y)
+#    print(time.time())
+#    t = time.localtime()
+#    print(t)
+#    print(time.strftime("%H",t))
+#    break
